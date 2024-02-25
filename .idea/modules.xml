@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../codingapplereact.iml" filepath="$PROJECT_DIR$/../codingapplereact.iml" />
+      <module fileurl="file://$PROJECT_DIR$/codingapplereact.iml" filepath="$PROJECT_DIR$/codingapplereact.iml" />
     </modules>
   </component>
 </project>

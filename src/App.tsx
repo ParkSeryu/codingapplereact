@@ -14,6 +14,7 @@ function Modal() {
 function App() {
   const [글제목, 글제목변경] = useState(['남자코트 추천', '강남 우동맛집', '파이썬 독학']);
   const [따봉] = useState(0);
+  const [modal, setModal] = useState(true);
 
   return (
     <div className="App">
@@ -52,10 +53,14 @@ function App() {
         <p>2월 17일 발행</p>
       </div>
       <div className="list">
-        <h4>{글제목[2]}</h4>
+        {/* eslint-disable-next-line max-len */}
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
+        <h4 onClick={() => setModal(!modal)}>{글제목[2]}</h4>
         <p>2월 17일 발행</p>
       </div>
-      <Modal />
+      {
+                modal ? <Modal /> : null
+            }
     </div>
   );
 }

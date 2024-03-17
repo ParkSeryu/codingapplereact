@@ -34,6 +34,7 @@ function App() {
   const [따봉, 따봉변경] = useState<number[]>([0, 0, 0]);
   const [modal, setModal] = useState(true);
   const [modalIdx, setModalIdx] = useState<number>(0);
+  const [입력값, 입력값변경] = useState<string>();
 
   return (
     <div className="App">
@@ -72,24 +73,63 @@ function App() {
                       {글제목[i]}
                       {/* eslint-disable-next-line max-len */}
                       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */}
-                      <span onClick={() => {
+                      <span onClick={(e) => {
+                        e.stopPropagation();
                         const copyOf따봉 = [...따봉]; // 따봉 배열의 복사본을 만듭니다.
                         // eslint-disable-next-line operator-assignment
                         copyOf따봉[i] = copyOf따봉[i] + 1; // 복사본에서 해당 요소를 업데이트합니다.
-                        따봉변경(copyOf따봉); // 새로운 배열로 상태를 업데이트합니다.
+                        따봉변경(copyOf따봉); // 새로운 배열로 상태를 업데이트합니다
                       }}
                       >
                         😂
                       </span>
                       {따봉[i]}
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const copy = [...글제목];
+                          // console.log(a);
+                          const newcopy = copy.filter((ele) => {
+                            console.log(a);
+                            return ele !== a;
+                          });
+                          console.log(newcopy);
+                          글제목변경(newcopy);
+                        }}
+                      >
+                        {' '}
+                        삭제
+                      </button>
                     </h4>
                     <p>2월 17일 발행</p>
                   </div>
                 ))
             }
 
+      <input onChange={(e) => {
+        입력값변경(e.target.value);
+        console.log(입력값);
+      }}
+      />
+      <button
+        onClick={() => {
+          const copy = [...글제목];
+          copy.push(입력값 || '');
+          글제목변경(copy);
+        }}
+        type="button"
+      >
+        발행
+      </button>
+
+      {/*  1. input에 뭐 입력하고 발행버튼누르면 글 추가
+            2. 글마다 삭제버튼 만들어놓고 누르면 없어짐
+      */}
+
       {
-                modal ? <Modal 글제목={글제목} idx={modalIdx} color="skyblue" 제목변경={글제목변경} /> : null
+                modal ? <Modal 글제목={글제목} idx={modalIdx} color="skyblue" 제목변경={글제목변경} />
+                  : null
             }
 
     </div>

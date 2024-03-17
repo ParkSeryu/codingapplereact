@@ -89,13 +89,8 @@ function App() {
                         onClick={(e) => {
                           e.stopPropagation();
                           const copy = [...글제목];
-                          // console.log(a);
-                          const newcopy = copy.filter((ele) => {
-                            console.log(a);
-                            return ele !== a;
-                          });
-                          console.log(newcopy);
-                          글제목변경(newcopy);
+                          copy.splice(i, 1);
+                          글제목변경(copy);
                         }}
                       >
                         {' '}

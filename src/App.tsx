@@ -29,6 +29,48 @@ function Modal({
   );
 }
 
+// eslint-disable-next-line react/prefer-stateless-function
+class Modal2 extends React.Component {
+  // eslint-disable-next-line no-useless-constructor
+  constructor(props: string | number) {
+    // @ts-ignore
+    super(props);
+    this.state = {
+      names: 'kim',
+      // eslint-disable-next-line react/no-unused-state
+      age: 20,
+    };
+  }
+
+  render() {
+    // @ts-ignore
+    const { names } = this.state;
+    // eslint-disable-next-line react/prop-types
+    // eslint-disable-next-line react/prop-types
+    // @ts-ignore
+    // eslint-disable-next-line react/prop-types
+    const { age } = this.props;
+    console.log(age);
+    return (
+      <div>
+        안녕
+        {' '}
+        {names}
+        {age}
+        <button
+          type="button"
+          onClick={() => {
+            this.setState({ names: 'park' });
+          }}
+        >
+          벝은
+        </button>
+      </div>
+
+    );
+  }
+}
+
 function App() {
   const [글제목, 글제목변경] = useState(['남자코트 추천', '강남 우동맛집', '파이썬 독학']);
   const [따봉, 따봉변경] = useState<number[]>([0, 0, 0]);
@@ -126,6 +168,7 @@ function App() {
                 modal ? <Modal 글제목={글제목} idx={modalIdx} color="skyblue" 제목변경={글제목변경} />
                   : null
             }
+      <Modal2 />
 
     </div>
   );
